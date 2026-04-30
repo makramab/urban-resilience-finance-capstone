@@ -46,21 +46,15 @@ export function BeachAreaContent() {
       </Section>
 
       <Section id="how" eyebrow="Method" heading="How we calculated it">
-        <div className="rounded-xl border border-border bg-muted/20 p-5 md:p-6 font-mono text-sm text-foreground overflow-x-auto">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-sans mb-3">Formula</p>
-          <p className="leading-relaxed">
-            <span className="text-primary">Cost</span> ={' '}
-            <span>Annual tourism revenue</span> ×{' '}
-            <span>Beach-loss rate</span> ×{' '}
-            <span>Scenario multiplier</span> ×{' '}
-            <span>10 yrs</span>
+        <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p>
+            The 10-year retained revenue is the gap between baseline beachfront tourism spending
+            and the projected decline if the beach asset were lost without intervention.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-          <InputTile label="Baseline revenue" desc="NPS and NYC tourism data for beachfront visitor spending." />
-          <InputTile label="Beach-loss rate" desc="Historical erosion + storm impact, extended linearly." />
-          <InputTile label="Scenario multipliers" desc="Three scenarios: no intervention, inland only, and beach + inland." />
-          <InputTile label="Horizon" desc="10-year cumulative, consistent with other infrastructure models." />
+          <p>
+            Beach nourishment combined with inland flood infrastructure preserves the asset that
+            drives the spending.
+          </p>
         </div>
       </Section>
 
@@ -132,23 +126,7 @@ export function BeachAreaContent() {
         />
       </Section>
 
-      <Section id="references" eyebrow="Sources" heading="References">
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <RefItem title="NPS economic analysis of coastal recreation" note="Visitor-spending benchmarks." />
-          <RefItem title="NYC tourism / visitor data" note="Seasonal volume and spending." />
-          <RefItem title="Coastal engineering literature" note="Erosion and beach-loss rates." />
-        </ul>
-      </Section>
     </>
-  )
-}
-
-function InputTile({ label, desc }: { label: string; desc: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-muted/20 p-4">
-      <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-    </div>
   )
 }
 
@@ -160,18 +138,6 @@ function AssumptionRow({ title, children }: { title: string; children: React.Rea
         <span className="text-foreground font-medium">{title}. </span>
         <span className="text-muted-foreground">{children}</span>
       </div>
-    </li>
-  )
-}
-
-function RefItem({ title, note }: { title: string; note?: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <span className="text-muted-foreground">—</span>
-      <p>
-        <span className="text-foreground font-medium">{title}</span>
-        {note && <span className="text-muted-foreground"> · {note}</span>}
-      </p>
     </li>
   )
 }

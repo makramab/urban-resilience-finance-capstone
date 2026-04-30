@@ -50,21 +50,15 @@ export function MentalHealthContent() {
       </Section>
 
       <Section id="how" eyebrow="Method" heading="How we calculated it">
-        <div className="rounded-xl border border-border bg-muted/20 p-5 md:p-6 font-mono text-sm text-foreground overflow-x-auto">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-sans mb-3">Formula</p>
-          <p className="leading-relaxed">
-            <span className="text-primary">Cost</span> ={' '}
-            <span>Population</span> ×{' '}
-            <span>PTSD rate</span> ×{' '}
-            <span>(Healthcare + lost wages per resident)</span> ×{' '}
-            <span>Recovery months</span>
+        <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p>
+            The figure applies a per-resident recovery cost of $4,555 across the
+            110,000-resident peninsula population over a 30-month post-event window.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-          <InputTile label="Exposed population" desc="~110,000 Rockaway peninsula residents, per ACS and NYC Data Book." />
-          <InputTile label="PTSD incidence" desc="~21% measured post-Sandy, literature-backed (Lowe et al., others)." />
-          <InputTile label="Per-person valuation" desc="$4,555 / resident, blending treatment costs and reduced earnings." />
-          <InputTile label="Recovery window" desc="30 months, representing the bulk of acute-phase care and disruption." />
+          <p>
+            The project blocks the floodwater that triggers the trauma response, removing the
+            cost driver entirely.
+          </p>
         </div>
       </Section>
 
@@ -114,23 +108,7 @@ export function MentalHealthContent() {
         />
       </Section>
 
-      <Section id="references" eyebrow="Sources" heading="References">
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <RefItem title="Lowe et al." note="Longitudinal PTSD studies of post-Sandy Rockaway residents." />
-          <RefItem title="APA disaster mental-health guidelines" note="Clinical benchmarks for recovery windows." />
-          <RefItem title="NYC Data Book 2025" note="Peninsula population figures." />
-        </ul>
-      </Section>
     </>
-  )
-}
-
-function InputTile({ label, desc }: { label: string; desc: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-muted/20 p-4">
-      <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-    </div>
   )
 }
 
@@ -142,18 +120,6 @@ function AssumptionRow({ title, children }: { title: string; children: React.Rea
         <span className="text-foreground font-medium">{title}. </span>
         <span className="text-muted-foreground">{children}</span>
       </div>
-    </li>
-  )
-}
-
-function RefItem({ title, note }: { title: string; note?: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <span className="text-muted-foreground">—</span>
-      <p>
-        <span className="text-foreground font-medium">{title}</span>
-        {note && <span className="text-muted-foreground"> · {note}</span>}
-      </p>
     </li>
   )
 }

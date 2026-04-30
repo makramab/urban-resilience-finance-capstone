@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ReferencesRouteImport } from './routes/references'
 import { Route as MethodologyRouteImport } from './routes/methodology'
 import { Route as ImpactMappingRouteImport } from './routes/impact-mapping'
 import { Route as ConclusionRouteImport } from './routes/conclusion'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as ModelsIndexRouteImport } from './routes/models/index'
 import { Route as ModelsSlugRouteImport } from './routes/models/$slug'
 
+const ReferencesRoute = ReferencesRouteImport.update({
+  id: '/references',
+  path: '/references',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const MethodologyRoute = MethodologyRouteImport.update({
   id: '/methodology',
   path: '/methodology',
@@ -59,6 +65,7 @@ export interface FileRoutesByFullPath {
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
   '/methodology': typeof MethodologyRoute
+  '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
   '/models/': typeof ModelsIndexRoute
 }
@@ -68,6 +75,7 @@ export interface FileRoutesByTo {
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
   '/methodology': typeof MethodologyRoute
+  '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
   '/models': typeof ModelsIndexRoute
 }
@@ -78,6 +86,7 @@ export interface FileRoutesById {
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
   '/methodology': typeof MethodologyRoute
+  '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
   '/models/': typeof ModelsIndexRoute
 }
@@ -89,6 +98,7 @@ export interface FileRouteTypes {
     | '/conclusion'
     | '/impact-mapping'
     | '/methodology'
+    | '/references'
     | '/models/$slug'
     | '/models/'
   fileRoutesByTo: FileRoutesByTo
@@ -98,6 +108,7 @@ export interface FileRouteTypes {
     | '/conclusion'
     | '/impact-mapping'
     | '/methodology'
+    | '/references'
     | '/models/$slug'
     | '/models'
   id:
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/conclusion'
     | '/impact-mapping'
     | '/methodology'
+    | '/references'
     | '/models/$slug'
     | '/models/'
   fileRoutesById: FileRoutesById
@@ -117,12 +129,20 @@ export interface RootRouteChildren {
   ConclusionRoute: typeof ConclusionRoute
   ImpactMappingRoute: typeof ImpactMappingRoute
   MethodologyRoute: typeof MethodologyRoute
+  ReferencesRoute: typeof ReferencesRoute
   ModelsSlugRoute: typeof ModelsSlugRoute
   ModelsIndexRoute: typeof ModelsIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/references': {
+      id: '/references'
+      path: '/references'
+      fullPath: '/references'
+      preLoaderRoute: typeof ReferencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/methodology': {
       id: '/methodology'
       path: '/methodology'
@@ -181,6 +201,7 @@ const rootRouteChildren: RootRouteChildren = {
   ConclusionRoute: ConclusionRoute,
   ImpactMappingRoute: ImpactMappingRoute,
   MethodologyRoute: MethodologyRoute,
+  ReferencesRoute: ReferencesRoute,
   ModelsSlugRoute: ModelsSlugRoute,
   ModelsIndexRoute: ModelsIndexRoute,
 }

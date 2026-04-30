@@ -40,20 +40,15 @@ export function HousingContent() {
       </Section>
 
       <Section id="how" eyebrow="Method" heading="How we calculated it">
-        <div className="rounded-xl border border-border bg-muted/20 p-5 md:p-6 font-mono text-sm text-foreground overflow-x-auto">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-sans mb-3">Formula</p>
-          <p className="leading-relaxed">
-            <span className="text-primary">Cost</span> ={' '}
-            <span>Displaced residents</span> ×{' '}
-            <span>Shelter rate / night</span> ×{' '}
-            <span>Displacement duration</span>
+        <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p>
+            Per-event emergency-shelter cost is computed at $165 per night over a 6–18 month
+            window for the 15,932 NYCHA residents in the flood zone.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-          <InputTile label="Exposure" desc="NYCHA developments on the peninsula, filtered to those within flood hazard polygons." />
-          <InputTile label="Shelter cost" desc="$165 per night, blending city shelter systems and temporary housing." />
-          <InputTile label="Duration range" desc="6–18 months to restore habitable conditions; central case used for the headline." />
-          <InputTile label="Resident count" desc="NYCHA Data Book 2025 headcount by development." />
+          <p>
+            The project protects the same buildings that flooded during Sandy in 2012, removing
+            the displacement event itself.
+          </p>
         </div>
       </Section>
 
@@ -102,23 +97,7 @@ export function HousingContent() {
         />
       </Section>
 
-      <Section id="references" eyebrow="Sources" heading="References">
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <RefItem title="NYCHA Data Book 2025" note="Development-level resident counts and flood-zone flags." />
-          <RefItem title="HUD shelter cost surveys" note="Benchmarks for temporary accommodation rates." />
-          <RefItem title="NYC DSS shelter operations reporting" note="Actual city displacement costs." />
-        </ul>
-      </Section>
     </>
-  )
-}
-
-function InputTile({ label, desc }: { label: string; desc: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-muted/20 p-4">
-      <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-    </div>
   )
 }
 
@@ -139,18 +118,6 @@ function AssumptionRow({ title, children }: { title: string; children: React.Rea
         <span className="text-foreground font-medium">{title}. </span>
         <span className="text-muted-foreground">{children}</span>
       </div>
-    </li>
-  )
-}
-
-function RefItem({ title, note }: { title: string; note?: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <span className="text-muted-foreground">—</span>
-      <p>
-        <span className="text-foreground font-medium">{title}</span>
-        {note && <span className="text-muted-foreground"> · {note}</span>}
-      </p>
     </li>
   )
 }

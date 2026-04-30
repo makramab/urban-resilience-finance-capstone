@@ -42,23 +42,15 @@ export function RoadwayFloodingContent() {
       </Section>
 
       <Section id="how" eyebrow="Method" heading="How we calculated it">
-        <div className="rounded-xl border border-border bg-muted/20 p-5 md:p-6 font-mono text-sm text-foreground overflow-x-auto">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-sans mb-3">Formula</p>
-          <p className="leading-relaxed">
-            <span className="text-primary">Cost</span> ={' '}
-            <span>Exposed roadway segments</span> ×{' '}
-            <span>AADT</span> ×{' '}
-            <span>Closure hours / event</span> ×{' '}
-            <span>Value of delay per vehicle-hour</span> ×{' '}
-            <span>Events / yr</span> ×{' '}
-            <span>10 yrs</span>
+        <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p>
+            The headline aggregates driver delay costs from flood-driven roadway closures across
+            the project area over a 10-year horizon.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-          <InputTile label="Exposure layer" desc="NYC roadway centerlines spatially joined with FEMA / NYC flood hazard polygons." />
-          <InputTile label="Traffic counts" desc="NYCDOT annual average daily traffic (AADT) by segment class." />
-          <InputTile label="Delay valuation" desc="USDOT Value of Travel Time Savings per vehicle-hour, passenger + freight blended." />
-          <InputTile label="Event rate" desc="Historical flood closure events per year, extrapolated linearly across the horizon." />
+          <p>
+            Targeted flood infrastructure prevents those closures, eliminating the delay cost they
+            would otherwise have caused.
+          </p>
         </div>
       </Section>
 
@@ -126,23 +118,7 @@ export function RoadwayFloodingContent() {
         />
       </Section>
 
-      <Section id="references" eyebrow="Sources" heading="References">
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <RefItem title="USDOT Value of Travel Time Savings" note="Departmental guidance, latest revision." />
-          <RefItem title="NYCDOT Annual Average Daily Traffic counts" note="Published by segment class." />
-          <RefItem title="FEMA / NYC Flood Hazard Mapper" note="Used for exposure join." />
-        </ul>
-      </Section>
     </>
-  )
-}
-
-function InputTile({ label, desc }: { label: string; desc: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-muted/20 p-4">
-      <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-    </div>
   )
 }
 
@@ -154,18 +130,6 @@ function AssumptionRow({ title, children }: { title: string; children: React.Rea
         <span className="text-foreground font-medium">{title}. </span>
         <span className="text-muted-foreground">{children}</span>
       </div>
-    </li>
-  )
-}
-
-function RefItem({ title, note }: { title: string; note?: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <span className="text-muted-foreground">—</span>
-      <p>
-        <span className="text-foreground font-medium">{title}</span>
-        {note && <span className="text-muted-foreground"> · {note}</span>}
-      </p>
     </li>
   )
 }

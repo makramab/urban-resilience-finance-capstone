@@ -11,7 +11,10 @@ const primaryNav = [
   { to: '/impact-mapping', label: 'Impact Mapping' },
 ]
 
-const endNav = [{ to: '/conclusion', label: 'Conclusion' }]
+const endNav = [
+  { to: '/conclusion', label: 'Conclusion' },
+  { to: '/references', label: 'References' },
+]
 
 export function Header() {
   const { dark, toggle } = useTheme()

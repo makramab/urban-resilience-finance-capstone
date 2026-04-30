@@ -5,7 +5,7 @@ export interface ModelMeta {
   short: string
   headline: string
   summary: string
-  category: 'Transportation' | 'Health' | 'Housing' | 'Environment' | 'Construction' | 'TBD'
+  category: 'Transportation' | 'Health' | 'Housing' | 'Environment' | 'Construction' | 'Community' | 'TBD'
 }
 
 export const models: ModelMeta[] = [
@@ -55,22 +55,22 @@ export const models: ModelMeta[] = [
     category: 'Construction',
   },
   {
-    slug: 'model-6',
+    slug: 'affordable-housing',
     number: 6,
-    title: 'Model 6',
-    short: 'Model 6',
-    headline: 'TBD',
-    summary: 'Reserved for a sixth financing model — focus area to be finalized.',
-    category: 'TBD',
+    title: 'Affordable Housing Protection',
+    short: 'Affordable Housing',
+    headline: '$204M',
+    summary: 'Avoided storm damage to the lowest-value coastal housing — 14,208 residential units protected by new barriers and dunes (30-year NPV).',
+    category: 'Housing',
   },
   {
-    slug: 'model-7',
+    slug: 'grocery-access',
     number: 7,
-    title: 'Model 7',
-    short: 'Model 7',
-    headline: 'TBD',
-    summary: 'Reserved for the seventh model — rounds out the full toolkit.',
-    category: 'TBD',
+    title: 'Grocery Store Service Area',
+    short: 'Grocery Access',
+    headline: '135K HH',
+    summary: '135,000 of 286,000 households within 10,000 ft of four major grocery stores fall inside evacuation zones — flood risk threatens essential access.',
+    category: 'Community',
   },
 ]
 

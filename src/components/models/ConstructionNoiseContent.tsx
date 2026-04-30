@@ -44,21 +44,17 @@ export function ConstructionNoiseContent() {
       </Section>
 
       <Section id="how" eyebrow="Method" heading="How we calculated it">
-        <div className="rounded-xl border border-border bg-muted/20 p-5 md:p-6 font-mono text-sm text-foreground overflow-x-auto">
-          <p className="text-xs uppercase tracking-widest text-muted-foreground font-sans mb-3">Formula</p>
-          <p className="leading-relaxed">
-            <span className="text-primary">Cost</span> ={' '}
-            <span>Exposed population</span> ×{' '}
-            <span>WHO dose-response coefficient</span> ×{' '}
-            <span>Per-case health cost</span> ×{' '}
-            <span>6 yrs</span>
+        <div className="space-y-4 text-base md:text-lg text-muted-foreground leading-relaxed max-w-3xl">
+          <p>
+            The headline is a central estimate of community health burden from sustained
+            construction noise, drawing on federal noise data and WHO health-response curves
+            applied to 44,000 residents in the postal zones closest to the work sites over the
+            6-year construction window.
           </p>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-4">
-          <InputTile label="Exposure" desc="Residents in postal zones closest to the construction sites, ~44,000 total." />
-          <InputTile label="Dose-response" desc="WHO environmental-noise guidelines linking decibel exposure to health outcomes." />
-          <InputTile label="Complaint comparables" desc="NYC DEP 311 noise complaints, benchmarked vs Astoria and Bay Ridge." />
-          <InputTile label="Duration" desc="6-year construction window; longer schedules push the cost proportionally." />
+          <p>
+            Because the project both creates the exposure and controls every lever for reducing
+            it, the cost is presented as a project-internal line rather than an external benefit.
+          </p>
         </div>
       </Section>
 
@@ -153,23 +149,7 @@ export function ConstructionNoiseContent() {
         />
       </Section>
 
-      <Section id="references" eyebrow="Sources" heading="References">
-        <ul className="space-y-2 text-sm text-muted-foreground">
-          <RefItem title="WHO Environmental Noise Guidelines" note="Dose-response and health-cost framework." />
-          <RefItem title="NYC DEP 311 noise complaint data" note="2020–2025, filtered to construction category." />
-          <RefItem title="Federal noise-monitoring benchmarks" note="FHWA / FAA comparables for equipment output." />
-        </ul>
-      </Section>
     </>
-  )
-}
-
-function InputTile({ label, desc }: { label: string; desc: string }) {
-  return (
-    <div className="rounded-lg border border-border bg-muted/20 p-4">
-      <p className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">{label}</p>
-      <p className="text-sm text-muted-foreground leading-relaxed">{desc}</p>
-    </div>
   )
 }
 
@@ -181,18 +161,6 @@ function AssumptionRow({ title, children }: { title: string; children: React.Rea
         <span className="text-foreground font-medium">{title}. </span>
         <span className="text-muted-foreground">{children}</span>
       </div>
-    </li>
-  )
-}
-
-function RefItem({ title, note }: { title: string; note?: string }) {
-  return (
-    <li className="flex items-start gap-2">
-      <span className="text-muted-foreground">—</span>
-      <p>
-        <span className="text-foreground font-medium">{title}</span>
-        {note && <span className="text-muted-foreground"> · {note}</span>}
-      </p>
     </li>
   )
 }

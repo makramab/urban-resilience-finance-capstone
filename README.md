@@ -47,6 +47,7 @@ bun x tsc --noEmit # type check
 /models/model-6            Placeholder
 /models/model-7            Placeholder
 /conclusion                Takeaways & future work
+/references                Sources used across all seven models
 ```
 
 ## Editing & contributing

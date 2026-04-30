@@ -48,9 +48,8 @@ bun x tsc --noEmit # type-check only
 | Add a new top-level page (e.g. `/stakeholders`) | [§5.4](#54-add-a-new-top-level-page) |
 | Edit the impact-mapping flowchart | [§5.5](#55-edit-the-impact-mapping-flowchart) |
 | Add an image, video, or embedded iframe | [§5.6](#56-add-images-videos-or-iframes) |
-| Fill in real reference citations | [§5.7](#57-fill-in-real-references) |
-| Promote Models 6 & 7 from placeholder to full | [§5.8](#58-promote-models-6--7-from-placeholder-to-full) |
 | Understand what content is real vs invented | [§7](#7-content-gaps--what-is-real-vs-illustrative) |
+| Understand the editorial principle (general audience) | [§2](#2-what-this-site-is) |
 
 ---
 
@@ -62,39 +61,43 @@ single-page poster could fit.
 
 The site has 13 pages: a landing page, four narrative pages (Background,
 Methodology, Impact Mapping, Conclusion), an index of models, and seven
-individual model pages — five with full content, two reserved as placeholders.
+individual model pages — **all with full content**. The five quantified poster
+models (Roadway Flooding, Mental Health, Public Housing Displacement, Beach
+Area, Construction Noise) plus two added in April 2026 that extend the poster
+(**Affordable Housing Protection**, **Grocery Store Service Area**).
 
 ### Source materials used so far
 
-**Only `capstone-poster-v4.pdf`** has been used as the basis for content. The
-poster is dense but compressed; almost everything on the site that is not
-literally on the poster is either:
+- **`capstone-poster-v4.pdf`** — the original poster: five quantified models,
+  impact-mapping flowchart, methodology workflow.
+- **`Bank Framework Table - Sheet1.csv`** — bank-framework field text
+  (What/Who/How Much/Contribution/Risk) and paraphrased interview takeaways
+  for all seven models, including the two added post-poster.
+- **`affordable-housing-map.png`** — visualization for Model 6.
+- **`GroceryModelImage.pdf`** — converted to PNG, visualization for Model 7.
 
-1. **Paraphrased and lightly elaborated** from poster text (most "Why this
-   matters" sections, the introduction blurbs), or
-2. **Illustrative placeholder** that needs to be replaced with real material
-   (chart values, references, formulas, assumption tables, sensitivity
-   narratives).
+### Editorial principle (April 2026 onward)
 
-See [§7](#7-content-gaps--what-is-real-vs-illustrative) for a per-model
-breakdown.
+The site is a **general-audience surface**, not an academic write-up. Where
+source material doesn't speak directly to a topic, we **omit** or paraphrase
+grounded only in CSV/poster content. We do **not** invent formulas, data-source
+attributions, citations, or methodology details. The April 2026 cleanup pass
+removed several earlier extrapolations on this principle — see [§7](#7-content-gaps--what-is-real-vs-illustrative).
 
 ### Source materials NOT yet incorporated
 
 These almost certainly exist and have not yet been used:
 
 - The original capstone proposal / draft / final-report document
-- Stakeholder interview transcripts (only short pull-quotes from the poster
-  are currently on the site)
+- Full stakeholder interview transcripts (only one paraphrased takeaway per
+  model is on the site, drawn from the CSV's "Interview" column)
 - NYCHA Data Book 2025 (only a few headline figures used)
-- Datasets feeding the five models (NYC Open Data, PLUTO, ACS, FEMA flood
+- Datasets feeding the seven models (NYC Open Data, PLUTO, ACS, FEMA flood
   hazard, NYCDOT AADT, NYC DEP 311 noise complaints, etc.)
-- Cited literature (Lowe et al., WHO Environmental Noise Guidelines, USDOT
-  Value of Travel Time Savings, NPS coastal economic studies, etc.)
 - Detailed model specifications, formulas, and sensitivity ranges
 - Stakeholder analysis matrix (the third pillar of the project — currently
   mentioned only on `/background`)
-- Any maps, photos, or diagrams beyond the poster
+- Any maps, photos, or diagrams beyond the two new model maps
 
 [§8](#8-source-materials-to-incorporate-next) maps each of these to the place
 on the site where they would fit naturally.
@@ -400,22 +403,16 @@ extend it to accept `ReactNode` if you want inline links — one-line change.)
 
 If a unified references page becomes useful, see [§5.4](#54-add-a-new-top-level-page) for adding `/references`.
 
-### 5.8. Promote Models 6 & 7 from placeholder to full
+### 5.8. Models 6 & 7 — done (April 2026)
 
-Both currently render `PlaceholderContent` (eight empty sections with an
-hourglass icon).
+Models 6 (Affordable Housing Protection) and 7 (Grocery Store Service Area)
+replaced the original `model-6` / `model-7` placeholders. Their content lives
+in `AffordableHousingContent.tsx` and `GroceryAccessContent.tsx`, registered in
+`src/routes/models/$slug.tsx` under slugs `affordable-housing` and
+`grocery-access`. `PlaceholderContent.tsx` is no longer wired to any slug but
+is kept around for any future TBD slot.
 
-1. Decide on the model's title, slug rename (currently `model-6` / `model-7`),
-   headline number, and category.
-2. Update the entry in `src/lib/models.ts` — change `slug`, `title`, `short`,
-   `headline`, `summary`, `category`.
-3. Create `src/components/models/{NewName}Content.tsx` (copy from any
-   completed model).
-4. Update the `contentMap` in `src/routes/models/$slug.tsx` to point the new
-   slug at the new content file. Remove the `'model-6'` / `'model-7'` key if
-   you renamed.
-5. The dashboard card will switch from the "TBD / Hourglass" appearance to a
-   normal card automatically (driven by `category !== 'TBD'`).
+If a future model 8 is added, follow the [§5.3](#53-add-a-new-model) recipe.
 
 ---
 
@@ -523,41 +520,68 @@ the client.
 
 ## 7. Content gaps — what is real vs illustrative
 
-This is the most important section for new contributors. **Anything marked
-"illustrative" is a placeholder I generated in the absence of real source
-material — replace with the real content as soon as it's available.**
+The site went through a deliberate **"less questionable" cleanup pass in
+April 2026** to remove inferred content (formulas, data-source attributions,
+citations, longer interview-quote framings) that wasn't grounded in the source
+material. What's on the site now is one of three things:
+
+1. **Lifted directly from the poster or the Bank Framework CSV** — defensible.
+2. **Paraphrased lightly from those sources** — same factual claim, different prose.
+3. **Still-illustrative chart values on two pages** — the Roadway Flooding bar chart and the Beach Area line chart show invented per-year values; the headline totals are real but the year-by-year shapes aren't.
 
 ### Site-wide
 
 | Element | Source | Status |
 |---|---|---|
 | Project title, team, sponsor, mentor | Poster | ✓ Real |
-| All five validated headline numbers ($105M, $501M, $16.5M, $170M, $17.1M) | Poster | ✓ Real |
-| Bank-framework field text (What/Who/How Much/Contribution/Risk) for each model | Poster | ✓ Real, lightly tightened for prose flow |
-| Interview quotes | Poster | ✓ Real, but **single short quote per model** — the full transcripts almost certainly have more |
+| All seven headline numbers ($105M, $501M, $16.5M, $170M, $17.1M, $204M, 135K HH) | Poster + CSV | ✓ Real |
+| Bank-framework field text for each model | CSV | ✓ Real, lightly tightened for prose flow |
+| Interview takeaways | CSV | ✓ Real — rendered as **paraphrased takeaways**, not verbatim quotes (visible "Paraphrased from stakeholder interview" label, "Source:" attribution prefix, no quote marks) |
 | Methodology workflow stages | Poster | ✓ Real, slightly expanded |
-| Impact flowchart categories | Poster | ⚠ Paraphrased — the poster's flowchart has more nodes and finer groupings than the seven columns now on the site |
-| `$809.6M+` on landing | Math (sum of five headlines) | ⚠ Sum is correct, but mixing per-event and 10yr figures into one stat is conceptually loose — flag or replace with a more honest aggregate |
+| Impact-mapping flowchart | Poster | ✓ Real — programs → directBlocks → branch cascades, tier-coloured nodes, model badges; rewritten in April 2026 to match poster structure |
+| `$809.6M+` on landing | Math (sum of poster's five headlines) | ⚠ **Now stale.** Mixes per-event with 10-year figures, doesn't include the new $204M NPV (Model 6), and includes an unmonetized model (Model 7). Replace with a more honest aggregate or drop |
 | "5 impact categories" stat on landing | Made up | ✗ Replace with a defensible figure |
-| Per-resident / per-night / per-hour valuations (where named) | Poster | ✓ Real |
+| Per-resident / per-night / per-hour valuations (where named) | Poster + CSV | ✓ Real |
 
 ### Per-model
 
-| Model | What's real | What's illustrative |
+| Model | What's real (after April 2026 cleanup) | What's still illustrative |
 |---|---|---|
-| **Roadway Flooding** | Headline ($105M), bank-framework fields, interview quote | Bar chart yearly values (invented), formula breakdown, input-tile descriptions, assumption text, references |
-| **Mental Health** | Headline ($501M), 21%/6% PTSD stat, $4,555/resident, 30-month window, interview quote | Per-resident valuation breakdown, "why this matters" elaboration, references |
-| **Housing Displacement** | Headline ($16.5M), 15,932 residents, $535/mo vs $2,000+ market, 5+ year waitlist, 88% in flood zone, $165/night, 6–18 month range, interview quote | Formula breakdown, assumption text, references |
-| **Beach Area Loss** | Headline ($170M), interview quote | Three-scenario line chart values (entirely invented), formula breakdown, assumptions, references |
-| **Construction Noise** | Headline ($17.1M), 44,000 residents, 6 years, -37% / +21% / +57% complaint changes, interview quote | Formula breakdown, dose-response framing details, assumptions, references |
-| **Models 6 & 7** | — | All placeholder. Whole content TBD |
+| **Roadway Flooding** | Headline ($105M / 10yr), bank framework, paraphrased takeaway, "Approach" summary | **Bar chart per-year values** — total is real, breakdown is invented |
+| **Mental Health** | Headline ($501M / event), 21%/6% PTSD, $4,555/resident, 30-month window, paraphrased takeaway, all narrative grounded in CSV | — |
+| **Public Housing Displacement** | Headline ($16.5M), 15,932 residents, $535/mo, 5+ year waitlist, 88% in flood zone, $165/night, 6–18 months, paraphrased takeaway | — |
+| **Beach Area Loss** | Headline ($170M / 10yr), bank framework, paraphrased takeaway | **Line chart 3-scenario values** — total is real, scenario shapes are invented |
+| **Construction Noise** | Headline ($17.1M), 44,000 residents, 6 years, –37% / +21% / +57% complaint changes, paraphrased takeaway | — |
+| **Affordable Housing Protection** (M6) | Headline ($204M / 30-yr NPV), 14,208 units lowest-tertile, USACE Sandy ~55,000-unit sensitivity, paraphrased takeaway, real map (`affordable-housing-map.png`) | — |
+| **Grocery Store Service Area** (M7) | 135K of 286K households, 10K-ft buffer, 4-store anchor set, evacuation zones, real map (`grocery-service-area.png`) | Currently **unmonetized** — explicitly flagged on the page |
 
-### Where I extrapolated narrative
+### What was REMOVED in the April 2026 cleanup
 
-Every model's "Why this matters", "Sensitivity & limitations", and most
-"Assumptions" prose is paraphrased and lightly extended beyond what the
-poster contains. The direction is faithful but the specific phrasings are
-mine and should be reviewed by the original team.
+For all seven models:
+
+- The **formula box + input-tile grid** under "How we calculated it" was
+  replaced with a 1–2 sentence "Approach" summary paraphrased only from the
+  CSV's "How Much" + "Contribution" lines. The unused `InputTile` helper was
+  also deleted from each content file.
+- The **per-model References section** was deleted from every model page
+  (entries had been paraphrased rather than verified). Removed from the anchor
+  sidebar too. Helper `RefItem` deleted. **Replaced** by a centralised
+  `/references` route (April 2026) that lists verified citations grouped by
+  source type — peer-reviewed literature, federal & international guidance,
+  project-specific reports, public datasets. Edit the list in
+  `src/routes/references.tsx`.
+- The anchor-nav label "How we calculated" was renamed to **"Approach"** —
+  softer general-audience framing.
+- The **`InterviewQuote` component** was refactored: no quote marks, no
+  `<blockquote>` element, `MessageSquare` icon (not `Quote`), explicit
+  "Paraphrased from stakeholder interview" eyebrow, "Source:" attribution
+  prefix instead of em-dash. The component name still says "Quote" but it
+  visually presents as a paraphrase.
+
+If the team produces a real methodology write-up, formulas can go back into
+the "Approach" section by replacing the paragraph body with a formula + input
+grid (use `git log -p src/components/models/` to find the pre-cleanup
+templates).
 
 ---
 
@@ -574,11 +598,14 @@ For each likely-available source, the natural place(s) on the site:
 
 ### Stakeholder interview transcripts
 
-- Every model's `<Section id="interview">` currently shows **one short
-  quote**. Add an array of quotes per model and either render them stacked
-  or in a `<details>` block.
-- Consider a new `/voices` route gathering the most representative quotes
-  (recipe in [§5.4](#54-add-a-new-top-level-page)).
+Each model's `<Section id="interview">` now shows **one paraphrased takeaway**
+drawn from the Bank Framework CSV's "Interview" column, rendered with the
+`InterviewQuote` component. Despite the legacy name, the component visually
+presents content as a paraphrase, not a verbatim quote (see §6 / §7).
+
+A dedicated `/stakeholders` page is still on the table — would aggregate
+paraphrased takeaways by stakeholder role and could host the third deliverable
+(stakeholder analysis matrix). Recipe in [§5.4](#54-add-a-new-top-level-page).
 
 ### NYCHA Data Book 2025
 
@@ -631,23 +658,36 @@ flowchart proves insufficient) all have natural homes.
 ## 9. Open work & TODOs
 
 ### Content
-- [ ] Replace illustrative chart values in Models 1, 4 with real data
-- [ ] Fill in real references in all five model files + landing page
-- [ ] Define and write Models 6 & 7
-- [ ] Expand the impact-mapping flowchart back to the poster's full granularity
-- [ ] Add stakeholder analysis content (own page, see §8)
-- [ ] Add longer interview excerpts where transcripts allow
+- [x] **Define and write Models 6 & 7** — done April 2026 (Affordable Housing
+      Protection, Grocery Store Service Area)
+- [x] **Expand the impact-mapping flowchart to the poster's full granularity**
+      — done April 2026 (programs → directBlocks → branch cascades, tier
+      colouring, model badges with deep links to model pages)
+- [x] **Reframe interview content as paraphrased takeaways, not verbatim
+      quotes** — done April 2026 (`InterviewQuote` component refactor)
+- [x] **Drop unverified methodology details from public pages** — done April
+      2026 ("less questionable" cleanup: formulas, input tiles, references all
+      removed; see §7)
+- [ ] Replace illustrative chart values in Roadway Flooding (bar chart) and
+      Beach Area (3-scenario line chart) — or replace those charts with plain
+      headline-figure tiles (the pattern used by Mental Health and Public
+      Housing pages)
+- [ ] Re-evaluate the `$809.6M+` landing stat — now stale: mixes per-event +
+      10-year + NPV figures, omits the new $204M NPV, includes one unmonetized
+      model
+- [ ] Decide whether to add a `/stakeholders` page (interview takeaways
+      organised by role + the third deliverable's stakeholder analysis matrix)
 
 ### Engineering
-- [ ] Re-evaluate the `$809.6M+` landing stat — currently mixes per-event and
-      10-year figures (see §7)
 - [ ] Add tests (none exist yet — Vitest is configured but unused)
 - [ ] Add SEO meta per page (only `__root.tsx` has site-wide meta)
-- [ ] Add accessibility audit pass (heading hierarchy, color contrast in
+- [ ] Add accessibility audit pass (heading hierarchy, colour contrast in
       light mode, dropdown keyboard nav)
 - [ ] Consider preloading the Recharts bundle on hover of model links
 - [ ] Decide whether to lift the "models" registry into a CMS / JSON file if
       content updates become frequent
+- [ ] `PlaceholderContent.tsx` is no longer wired to any slug — keep for
+      future TBD slot or delete
 
 ### Validation (from `/conclusion`)
 - [ ] Sensitivity analysis on each model's headline figure

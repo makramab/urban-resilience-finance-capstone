@@ -23,6 +23,7 @@ export function Footer() {
             <li><Link to="/methodology" className="hover:text-foreground">Methodology</Link></li>
             <li><Link to="/impact-mapping" className="hover:text-foreground">Impact Mapping</Link></li>
             <li><Link to="/conclusion" className="hover:text-foreground">Conclusion</Link></li>
+            <li><Link to="/references" className="hover:text-foreground">References</Link></li>
           </ul>
         </div>
 

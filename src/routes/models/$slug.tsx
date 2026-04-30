@@ -9,6 +9,8 @@ import { MentalHealthContent } from '#/components/models/MentalHealthContent'
 import { HousingContent } from '#/components/models/HousingContent'
 import { BeachAreaContent } from '#/components/models/BeachAreaContent'
 import { ConstructionNoiseContent } from '#/components/models/ConstructionNoiseContent'
+import { AffordableHousingContent } from '#/components/models/AffordableHousingContent'
+import { GroceryAccessContent } from '#/components/models/GroceryAccessContent'
 import { PlaceholderContent } from '#/components/models/PlaceholderContent'
 
 const contentMap: Record<string, React.ComponentType> = {
@@ -17,8 +19,8 @@ const contentMap: Record<string, React.ComponentType> = {
   housing: HousingContent,
   'beach-area': BeachAreaContent,
   'construction-noise': ConstructionNoiseContent,
-  'model-6': PlaceholderContent,
-  'model-7': PlaceholderContent,
+  'affordable-housing': AffordableHousingContent,
+  'grocery-access': GroceryAccessContent,
 }
 
 export const Route = createFileRoute('/models/$slug')({
@@ -32,12 +34,11 @@ const anchorSections = [
   { id: 'overview', label: 'Overview' },
   { id: 'framework', label: 'Bank Framework' },
   { id: 'why', label: 'Why it matters' },
-  { id: 'how', label: 'How we calculated' },
+  { id: 'how', label: 'Approach' },
   { id: 'visualization', label: 'Visualization' },
   { id: 'assumptions', label: 'Assumptions' },
   { id: 'limitations', label: 'Sensitivity & Limits' },
   { id: 'interview', label: 'From the field' },
-  { id: 'references', label: 'References' },
   { id: 'related', label: 'Related models' },
 ]
 
