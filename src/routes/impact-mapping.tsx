@@ -52,15 +52,21 @@ function ImpactMapping() {
               indirect, or looping (financial feedback).
             </p>
             <p>
-              The five quantified models live at specific endpoints in the cascade — look for the{' '}
+              The seven quantified models live at specific endpoints in the cascade — look for the{' '}
               <span className="rounded border border-primary/40 bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">M1</span>{' '}
               –{' '}
-              <span className="rounded border border-primary/40 bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">M5</span>{' '}
-              badges. They sit on "Transit access preserved" (Model 1, roadway flooding), "Mental health
-              burden lessened" (Model 2), the property-and-insurance branch's funding endpoint
-              (Model 3, housing displacement), the beach nourishment endpoint (Model 4), and the
-              construction-phase financial feasibility endpoint (Model 5, construction noise).
+              <span className="rounded border border-primary/40 bg-primary/15 px-1.5 py-0.5 text-[10px] font-bold uppercase tracking-wider text-primary">M7</span>{' '}
+              badges:
             </p>
+            <ul className="space-y-1.5 pl-5 list-disc marker:text-primary/60 text-base text-muted-foreground leading-relaxed">
+              <li><span className="text-foreground">Model 1 (Roadway Flooding)</span> — "Transit access preserved" branch under "Flood event prevented"</li>
+              <li><span className="text-foreground">Model 2 (Mental Health)</span> — "Mental health burden lessen" branch under "Flood event prevented"</li>
+              <li><span className="text-foreground">Model 3 (Public Housing Displacement)</span> — "Reduced displacement / Community cohesion preserved" branch under "Reduced flood disruption"</li>
+              <li><span className="text-foreground">Model 4 (Beach Area)</span> — "Wider beach + dune system" branch under Beach nourishment</li>
+              <li><span className="text-foreground">Model 5 (Construction Noise)</span> — "Noise, traffic, disruption" branch under Infrastructure construction (negative side)</li>
+              <li><span className="text-foreground">Model 6 (Affordable Housing Protection)</span> — "Property damage avoided / Insurance claim" branch under "Reduced flood risk"</li>
+              <li><span className="text-foreground">Model 7 (Grocery Store Service Area)</span> — "Grocery access preserved" branch under "Flood event prevented"</li>
+            </ul>
           </div>
         </Section>
 

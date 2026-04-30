@@ -243,7 +243,7 @@ const programs: Program[] = [
         direct: 'Reduced flood disruption',
         branches: [
           {
-            model: 6,
+            model: 3,
             nodes: [
               { text: 'Reduced displacement', tier: 'indirect' },
               { text: 'Community cohesion preserved', tier: 'indirect' },
@@ -268,7 +268,7 @@ const programs: Program[] = [
         direct: 'Reduced flood risk',
         branches: [
           {
-            model: 3,
+            model: 6,
             nodes: [
               { text: 'Property damage avoided', tier: 'indirect' },
               { text: 'Insurance claim', tier: 'indirect' },
