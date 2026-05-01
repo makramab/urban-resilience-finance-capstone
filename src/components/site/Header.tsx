@@ -12,6 +12,7 @@ const primaryNav = [
 ]
 
 const endNav = [
+  { to: '/investment-considerations', label: 'Investment' },
   { to: '/conclusion', label: 'Conclusion' },
   { to: '/references', label: 'References' },
 ]

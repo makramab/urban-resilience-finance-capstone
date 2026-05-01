@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ReferencesRouteImport } from './routes/references'
 import { Route as MethodologyRouteImport } from './routes/methodology'
+import { Route as InvestmentConsiderationsRouteImport } from './routes/investment-considerations'
 import { Route as ImpactMappingRouteImport } from './routes/impact-mapping'
 import { Route as ConclusionRouteImport } from './routes/conclusion'
 import { Route as BackgroundRouteImport } from './routes/background'
@@ -28,6 +29,12 @@ const MethodologyRoute = MethodologyRouteImport.update({
   path: '/methodology',
   getParentRoute: () => rootRouteImport,
 } as any)
+const InvestmentConsiderationsRoute =
+  InvestmentConsiderationsRouteImport.update({
+    id: '/investment-considerations',
+    path: '/investment-considerations',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const ImpactMappingRoute = ImpactMappingRouteImport.update({
   id: '/impact-mapping',
   path: '/impact-mapping',
@@ -64,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/background': typeof BackgroundRoute
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
+  '/investment-considerations': typeof InvestmentConsiderationsRoute
   '/methodology': typeof MethodologyRoute
   '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
@@ -74,6 +82,7 @@ export interface FileRoutesByTo {
   '/background': typeof BackgroundRoute
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
+  '/investment-considerations': typeof InvestmentConsiderationsRoute
   '/methodology': typeof MethodologyRoute
   '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
@@ -85,6 +94,7 @@ export interface FileRoutesById {
   '/background': typeof BackgroundRoute
   '/conclusion': typeof ConclusionRoute
   '/impact-mapping': typeof ImpactMappingRoute
+  '/investment-considerations': typeof InvestmentConsiderationsRoute
   '/methodology': typeof MethodologyRoute
   '/references': typeof ReferencesRoute
   '/models/$slug': typeof ModelsSlugRoute
@@ -97,6 +107,7 @@ export interface FileRouteTypes {
     | '/background'
     | '/conclusion'
     | '/impact-mapping'
+    | '/investment-considerations'
     | '/methodology'
     | '/references'
     | '/models/$slug'
@@ -107,6 +118,7 @@ export interface FileRouteTypes {
     | '/background'
     | '/conclusion'
     | '/impact-mapping'
+    | '/investment-considerations'
     | '/methodology'
     | '/references'
     | '/models/$slug'
@@ -117,6 +129,7 @@ export interface FileRouteTypes {
     | '/background'
     | '/conclusion'
     | '/impact-mapping'
+    | '/investment-considerations'
     | '/methodology'
     | '/references'
     | '/models/$slug'
@@ -128,6 +141,7 @@ export interface RootRouteChildren {
   BackgroundRoute: typeof BackgroundRoute
   ConclusionRoute: typeof ConclusionRoute
   ImpactMappingRoute: typeof ImpactMappingRoute
+  InvestmentConsiderationsRoute: typeof InvestmentConsiderationsRoute
   MethodologyRoute: typeof MethodologyRoute
   ReferencesRoute: typeof ReferencesRoute
   ModelsSlugRoute: typeof ModelsSlugRoute
@@ -148,6 +162,13 @@ declare module '@tanstack/react-router' {
       path: '/methodology'
       fullPath: '/methodology'
       preLoaderRoute: typeof MethodologyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/investment-considerations': {
+      id: '/investment-considerations'
+      path: '/investment-considerations'
+      fullPath: '/investment-considerations'
+      preLoaderRoute: typeof InvestmentConsiderationsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/impact-mapping': {
@@ -200,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   BackgroundRoute: BackgroundRoute,
   ConclusionRoute: ConclusionRoute,
   ImpactMappingRoute: ImpactMappingRoute,
+  InvestmentConsiderationsRoute: InvestmentConsiderationsRoute,
   MethodologyRoute: MethodologyRoute,
   ReferencesRoute: ReferencesRoute,
   ModelsSlugRoute: ModelsSlugRoute,
